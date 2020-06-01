@@ -1,0 +1,152 @@
+<div class="view" id="pandemics">
+  <div class="subview-wrap">
+    <div class="subview">
+      <h2>Pandemic Dynamics</h2>
+
+<p>
+  Get acquainted with the fundamental principles of pandemic dynamics by exploring the basic foundations of exponential growth.
+</p>
+
+<p>
+  <h3>
+    Learning Outcomes:
+  </h3>
+  Acquire factual knowledge of pandemics, including historical background and the biology of viruses.
+  Recognise the mathematical underpinnings of exponential growth in viral outbreaks.
+  Gain a basic understanding of the various factors that feed into determining the course of an outbreak.
+  Learn to recognise pandemic-like processes in areas other than epidemiology, such as radioactive decay, gene-selection in evolution and the spread of ideas in a population.
+</p>
+
+<p>
+  <h3>
+    Teaching Methods:
+  </h3>
+  Text-based lecture slides presenting the required core ideas and factual knowledge.
+  Interactive model of a basic programme showcasing the principles of the exponential growth seen in pandemics.
+  Short quizzes to test and reaffirm what has been learnt.
+  Providing further external resources from which to follow up deeper study of the subject.
+</p>
+    </div>
+    <div class="subview">
+      <h2>
+        Welcome!
+      </h2>
+
+<p>
+  What are pandemics? In this snapclass we will gain an overview of the core principles of pandemic dynamics. 
+</p>
+
+<p>
+  Let’s start with a short quiz to get yourself going.
+  <button onclick="mnml.switchView('pandemics-quiz1')">start</button>
+</p>
+
+    </div>
+  </div>
+</div>
+<div class="view" id="pandemics-quiz1">
+  <div id="quiz1" class="subview-wrap">
+    <!-- quiz content goes here -->
+  </div>
+</div>
+
+<div class="view" id="pandemics2">
+  <div class="subview-wrap">
+    <div class="subview">
+      <h2>
+        What are Viruses?
+      </h2>
+
+<p>
+  To clear up common misconception, let us clearly define what viruses are and identify their key features. The first objective already leads us to difficulties, as viruses challenge our very definitions of what ‘life’ itself actually is. The most basic of processes that are essential to life, such as creating and storing energy, protein synthesis and even reproduction, are absent in viruses. The only way they can still ‘stay alive’ is by taking over the biological machinery of another living organism, a host, so that it can do those things the virus cannot. This leads us to our second objective regarding viruses, and that is the way by which we can identify one. Other than its biochemical features, such as size, shape and chemical composition, a virus cannot be found living on its own for a long period of time - it must be reliant on a host cell.
+</p>
+    </div>
+    <div class="subview">
+<p>
+  Viruses cause disease. That is what we know them for. When viruses employ their parasitic tactics, the host cell’s function is compromised and it eventually dies, releasing a multitude of new copies of the virus to infect other cells and take over their reproductive processes to create even more viruses. When we get ill, our body’s immune system responses to this attack are what become the symptoms of a viral disease: fever, headaches, fatigue, cough etc. The body usually wins out over the course of a few days or weeks, but sometimes the virus can overwhelm the immune system and become deadly.
+</p>
+    </div>
+    <div class="subview">
+      <h2>
+        The Immune System
+      </h2>
+
+<p>
+  The immune system is the military of our body. It defends us from external invaders including viruses. It is divided into two parts: nonspecific immunity and specific immunity. The former is a general-purpose defence mechanism that attacks all foreigners that enter the body, be it viruses or worms. What is more interesting to our discussion of pandemics is specific immunity, or also acquired immunity. As its name suggests, this defence mechanism is specific to a certain type of invader, and therefore much more effective in fighting it. The only way our immune system can develop defences against a specific pathogen is by being exposed to it, and after it has, we are considered immune. 
+</p>
+    </div>
+    <div class="subview">
+      <h2>
+        Pandemics
+      </h2>
+
+
+<p>
+  Now that we have a general overview of viruses and immune systems, we can start to examine the workings of a pandemic using the following model. 
+</p>
+
+
+<p>
+  The power of this model is its simplicity. No elaborate mathematics or software tools were used to build the programme, yet the outcomes show very accurately the qualitative nature of a pandemic spread. 
+</p>
+    </div>
+    <div class="subview">
+      <h2>
+        Pandemics
+      </h2>
+
+<p>
+  The programme runs as so:
+  <ol>
+    <li>
+      There are initially 4 lists: uninfected, infected, recovered, died. 
+    </li>
+    <li>
+      There are three parameters: infection constant, probability of recovery, closing time.
+    </li>
+    <li>
+      The programme takes in as inputs the initial sizes of the lists and the values of the parameters. For example: 1000 uninfected and 3 infected individuals, infection constant = 1.2, probability of recovery 90% and closing time = 10 loops.
+    </li>
+    <li>
+      When run, the programme iterates through each uninfected person (the entries of the uninfected list) and rolls a die to decide whether they will be infected. The probability of infection is determined by the parameter infection constant multiplied by the fraction of people who are already infected (the size of the infected list divided by the total number of individuals in the simulation). If the person is infected, he is moved from the uninfected list to the infected list.
+    </li>
+    <li>
+      Next, the programme iterates through each person in the infected list. The programme keeps track of how long each individual has been in the list for, and if they have reached the closing time (the number of loops that this parameter specifies), then the programme again rolls a die, this time determining whether this individual will recover or die (move to the recovered list or the died list).
+    </li>
+    <li>
+      This is one loop. The programme iterates through this loop until there are no more infected people (the size of the list infected becomes zero).
+    </li>
+  </ol>
+</p>
+    </div>
+    <div class="subview">
+      <div class="controls" id="pandemicSim"></div>
+    </div>
+    <div class="subview">
+      <!--canvas for experiment-->
+      <div class="canvas-wrapper" id="pModelChart"></div>
+      <button id="renderCanvas" style="margin: 0 auto;">render</button>
+    </div>
+    <div class="subview">
+      <p>
+        This model, although having very little to do with the reality of outbreaks, manages to capture important principles in our understanding of pandemics. The variable we were playing with, the infection constant, can be interpreted in a general way as the ability of the virus to infect. This can either be due to the biological properties of the virus, e.g. if it is airborne, or our responses to braking the spread as much as possible e.g. quarantines, social distancing, vaccines etc. Note that in this simple model, everyone is infected. The question then becomes how does the shape of the infection’s progression look like, as that is an important factor in our healthcare system’s ability to cope with the pandemic. In the first two scenarios, there was a period where everyone was sick, that means even the doctors and nurses!
+      </p>
+    </div>
+    <div class="subview">
+      <h2>
+        Exponential Growth
+      </h2>
+
+<p>
+  Pandemics are a classic example of exponential growth. As described previously, the programme calculates the probability that an individual becomes infected as a function of the number of people already infected. This is the essence of the exponential function - it depends on the size of itself, multiplied by some constant factor, in our case the infection constant.
+</p>
+<p>
+  This mathematical function is observed in many places in our life and the universe. In humans, the spread of ideas can modelled in the same way as pandemics are. We can all intuitively realise that an idea can also be ‘infectious’, and its infection constant can depend on how attractive the idea is, how persuasive or charming the person who shares the idea is, how susceptible people are to being convinced etc.
+</p>
+<p>
+  Radioactive decay, population growth and compound interest are all examples of exponential growth. Can you think of any more?
+</p>
+
+    </div>
+  </div>
+</div>

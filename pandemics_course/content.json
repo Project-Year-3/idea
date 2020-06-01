@@ -1,0 +1,49 @@
+{
+  "quiz1":{
+    "apresView":"pandemics2",
+    "type":"quiz",
+    "correct":0,
+    "questions":[
+      {
+        "Q":"What causes pandemics",
+        "O":["viruses","bacteria","both"],
+        "A":["both"]
+      },
+      {
+        "Q":"What causes pandemics",
+        "O":["viruses","bacteria","both"],
+        "A":["both"]
+      },
+      {
+        "Q":"What causes pandemics",
+        "O":["viruses","bacteria","both"],
+        "A":["both"]
+      },
+      {
+        "Q":"What causes pandemics",
+        "O":["viruses","bacteria","both"],
+        "A":["both"]
+      },
+      {
+        "Q":"What causes pandemics",
+        "O":["viruses","bacteria","both"],
+        "A":["both"]
+      },
+      {
+        "Q":"What causes pandemics",
+        "O":["viruses","bacteria","both"],
+        "A":["both"]
+      },
+      {
+        "Q":"What causes pandemics",
+        "O":["viruses","bacteria","both"],
+        "A":["both"]
+      },
+      {
+        "Q":"What causes pandemics",
+        "O":["viruses","bacteria","both"],
+        "A":["both"]
+      }
+    ]
+  }
+}

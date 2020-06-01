@@ -1,0 +1,17 @@
+{
+  "sleepWords":[
+    "red light",
+    "food",
+    "stress"
+  ],
+  "quiz1":{
+    "type":"quiz",
+    "questions":[
+      {
+        "Q":"Do you usually go to bed at the same time?",
+        "O":["yes","no"],
+        "A":""
+      }
+    ]
+  }
+}

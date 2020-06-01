@@ -1,0 +1,218 @@
+:root {
+  --width:98vw;
+  --height:91vh;
+  font-size: 16px;
+  --col:hsl(239, 50%, 50%);
+  --col1:hsl(239, 20%, 50%);
+  --col3:hsl(239, 62%, 62%);
+  --col4:hsl(239, 45%, 58%);
+}
+
+::-webkit-scrollbar {
+  width:5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5); 
+}
+
+body {
+  margin:0;
+  background: rgb(0, 0, 0);
+}
+
+#mnml {
+  width:100vw;
+  height:100vh;
+  display: grid;
+  grid-template-areas:
+  'header'
+  'main';
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  overflow: hidden;
+}
+
+#mnml>header{
+  grid-area:header;
+  color:white;
+  background: var(--col);
+  height:7vh;
+  font-size: 6vh;
+  display: grid;
+  place-content: space-around;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.726);
+  z-index: 9001;
+  grid-auto-flow: column;
+  grid-template-areas: "navToggle .";
+  grid-template-columns: 0.4fr 2fr;
+  text-align: center;
+  place-items: center;
+}
+
+#mnml>header>#navToggle {
+  border:none;
+  border-radius: 100%;
+  grid-area:navToggle;
+  width:6vh;
+  height:6vh;
+  background-color: var(--col3);
+  background-image: url("assets/menu.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 4vh;
+  transition: all 0.2s;
+  box-shadow: inset 0 0px 2px rgba(0, 0, 0, 0.527);
+}
+
+#mnml>header>#navToggle.open {
+  background-image: url("assets/chevrons-right.svg");
+  transform: rotate(180deg);
+}
+
+#mnml>main{
+  grid-area:main;
+  background:#fff;
+  display: grid;
+  width:var(--width);
+  height:var(--height);
+  padding: 1vh 1vw;
+}
+
+#mnml>nav{
+  background:var(--col4);
+  display: grid;
+  z-index: 9000;
+  position: fixed;
+  width:max(33vw,150px);
+  height:93vh;
+  top:7vh;
+  left:0;
+  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.726);
+  transform:translateX(calc(-1 * max(50vw,200px)));
+  transition: transform 0.2s;
+  grid-area: nav;
+  color:white;
+  place-items: center;
+  place-content: center;
+  grid-gap:2vh;
+}
+
+#mnml > nav > span {
+  display: grid;
+  place-items: center;
+  height:5vh;
+  padding:2vh 0 2vh 0;
+  background: rgba(83, 83, 83, 0.247);
+  width:max(33vw,150px);
+}
+
+#mnml>nav.open {
+  transform:translateX(0);
+}
+
+#mnml>nav.open>.toggle {
+  left:78%;
+  border-radius: 100%;
+}
+
+#mnml>main>.view {
+  display: none;
+  place-items: center;
+  place-content: center;
+  grid-template-rows: repeat(minmax(250px,1fr),auto-fit);
+}
+#mnml>main>.view.current {
+  display: grid;
+}
+
+#mnml .subview-wrap {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap:2vw;
+  scroll-snap-type: x mandatory;
+  width:var(--width);
+}
+#mnml .subview-wrap > .subview {
+  display: grid;
+  width:var(--width);
+  height:calc(var(--height) * 0.97);
+  scroll-snap-align: start;
+  place-items: center;
+  place-content: center;
+}
+
+#mnml canvas {
+  width:var(--width);
+  height:var(--width);
+}
+
+#mnml .controls {
+  display: grid;
+  gap:2vh;
+  width:calc(var(--width)*0.8)
+}
+
+#mnml .controls::before{
+  content:attr(data-label);
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+#mnml .controls > div {
+  display: grid;
+  place-items: center;
+}
+
+#mnml .controls > div > input {
+  width:100%;
+}
+#mnml .controls > div > div {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap:2vw;
+  width:100%;
+  place-items: space-around;
+  place-content: space-around;
+}
+
+@media (min-width: 600px){
+  :root {
+    --width:78vw;
+  }
+  #mnml {
+    grid-template-areas:
+    'header header'
+    'nav main';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  #mnml > header {
+    grid-template-areas: ".";
+    grid-template-columns: 1fr;
+  }
+  #mnml > header > #navToggle {
+    display:none;
+  }
+  #mnml > nav {
+    transform:translateX(0);
+    width:20vw;
+    position: relative;
+    top:0;
+    box-shadow: none;
+    height:auto;
+  }
+  #mnml > nav > span {
+    width:20vw;
+  }
+}
