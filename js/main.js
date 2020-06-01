@@ -1,8 +1,8 @@
 var init = function(){
   pandemicsCourse = new Course({
     name:"Pandemics",
-    htmlUrl:"/pandemics_course/pandemics.html",
-    jsonUrl:"/pandemics_course/content.json"
+    htmlUrl:"pandemics_course/pandemics.html",
+    jsonUrl:"pandemics_course/content.json"
   });
   pandemicsCourse.loaded.then(()=>{
     for (key in pandemicsCourse.content) {
@@ -52,8 +52,8 @@ var init = function(){
   
   sleepCourse = new Course({
     name:"Sleep-Health",
-    htmlUrl:"/sleephealth_course/sleephealth.html",
-    jsonUrl:"/sleephealth_course/sleephealth.json"
+    htmlUrl:"sleephealth_course/sleephealth.html",
+    jsonUrl:"sleephealth_course/sleephealth.json"
   })
 
   sleepCourse.loaded.then(()=>{
