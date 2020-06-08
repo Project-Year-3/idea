@@ -1,5 +1,9 @@
 :root {
     font-size: 16px;
+    --col:hsl(213, 50%, 50%);
+    --col1:hsl(213, 20%, 50%);
+    --col3:hsl(213, 62%, 62%);
+    --col4:hsl(213, 45%, 58%);
 }
 
 input[type="number"] {
@@ -114,4 +118,9 @@ input[type="radio"]::after{
 .quiz > .subview {
     place-items: center !important;
     place-content: center !important;
+}
+
+#mnml #logo {
+    width:65vmin;
+    margin:0 calc(var(--width)/8);
 }
