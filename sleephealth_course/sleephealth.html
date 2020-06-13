@@ -1,92 +1,45 @@
 <div class="view" id="sleephealth">
-  <canvas id="wordCanvas"></canvas>
   <div class="subview-wrap">
-    <div class="subview">
-      <h2>
-        Sleep Health
-      </h2>
 
-<p>
-  Learn about the manyfold benefits of good sleep and what you can do to improve your own sleep health
-</p>
-
-<p>
-  <h3>
-    Learning Outcomes:
-  </h3>
-  <ul>
-    <li>
-      Understanding the benefits of sleep for mental and physical health
-    </li>
-    <li>
-      Exploring the factors that influence sleep quality 
-    </li>
-    <li>
-      Learning what you can do to improve your sleep health
-    </li>
-  </ul>
-</p>
-
-<p>
-  <h3>
-  	Teaching Methods:
-  </h3>
-  <ul>
-    <li>
-      Brainstorming
-    </li>
-    <li>
-      Quiz
-    </li>
-    <li>
-      Text
-    </li>
-  </ul>
-</p>
-    </div>
-<div class="subview">
-  <p>Let’s start with a little quiz about your sleep habits. This way we can tailor this session to your needs.
-  </p>
-  <button onclick="sleepQuiz()">start</button>
-</div>
     <div class="subview">
       What causes us to sleep?
 
-The interplay of two biological processes!
-<img src="img/sfig1.jpeg" alt="bioprocesses"/>
-<p>
-  <h4>
-    Process-S:
-  </h4>
-  This is your sleep drive. It increases the longer you don’t sleep and decreases once you do.
-</p>
+      The interplay of two biological processes!
+      <img src="img/sfig1.jpeg" alt="bioprocesses" />
+      <p>
+        <h4>
+          Process-S:
+        </h4>
+        This is your sleep drive. It increases the longer you don’t sleep and decreases once you do.
+      </p>
 
-<p>
-  <h4>
-    Process-C:
-  </h4>
-  This is your body's natural clock, the circadian rhythm. It oscillates between night and day. Whether you actually sleep or not doesn’t matter
-</p>
+      <p>
+        <h4>
+          Process-C:
+        </h4>
+        This is your body's natural clock, the circadian rhythm. It oscillates between night and day. Whether you
+        actually sleep or not doesn’t matter
+      </p>
     </div>
     <div class="subview">
       <p>
         <h3>
           So when do we sleep?
         </h3>
-  When the distance between the two curves becomes too great. 
+        When the distance between the two curves becomes too great.
       </p>
-      <img src="img/sfig2.jpeg" alt="bioprocesses"/> 
-        <img src="img/sfig3.jpeg" alt="bioprocesses"/>
+      <img src="img/sfig2.jpeg" alt="bioprocesses" />
+      <img src="img/sfig3.jpeg" alt="bioprocesses" />
     </div>
 
     <div class="subview">
       <p>
         <h3>
-          Quick test! 
+          Quick test!
         </h3>
-  To which of situation would the following graph fit?
+        To which of situation would the following graph fit?
       </p>
-      <img src="img/sfig4.jpeg" alt="test"/>
+      <img src="img/sfig4.jpeg" alt="test" />
       <div id="sleepQuiz" class="options">
         <div class="correct">Pulling an allnighter</div>
         <div>Taking a midday nap</div>
@@ -96,50 +49,142 @@ The interplay of two biological processes!
     </div>
     <div class="subview">
       <p>
-      <h3>
-        Why should we sleep?
-      </h3>
+        <h3>
+          Why should we sleep?
+        </h3>
         Sleep has manyfold benefits, both for your physical and mental health
       </p>
       <p>
-<h4>
-  Physical health benefits:
-</h4>
-<ul>
-  <li>
-    Strengthens the immune system
-  </li>
-  <li>
-    Reduce risk of heart disease and strokes
-  </li>
-  <li>
-    Reduce risk of cancer
-  </li>
-  <li>
-    Increases chance of successful dieting
-  </li>
-  <li>
-    Improves performance in sports and recovery
-  </li>
-</ul>
-
+        <h4>
+          Physical health benefits:
+        </h4>
+        <ul>
+          <li>
+            Strengthens the immune system
+          </li>
+          <li>
+            Reduce risk of heart disease and strokes
+          </li>
+          <li>
+            Reduce risk of cancer
+          </li>
+          <li>
+            Increases chance of successful dieting
+          </li>
+          <li>
+            Improves performance in sports and recovery
+          </li>
+        </ul>
       </p>
+    </div>
+    <div class="subview">
+      <h2>So how can we make sure we get all these benefits?</h2>
     </div>
     <div class="subview">
       <p>
         <h3>
           Brainstorm time...
         </h3>
-  What factors can have an influence on your sleep quality? To submit another idea click “also... “. Once you’re done click “done” ... 
+        What factors can have an influence on your sleep quality? To submit another idea click "also..." Once you’re
+        done, swipe to the next page.
       </p>
-      <div class="controls" id="wordControls"></div>
+      <!-- <div class="controls" id="wordControls"></div> -->
+      <div id="sleepInfluenceWrap">
+        <input id="sleepInfluenceText" placeholder="caffeine"/>
+        <button style="grid-area:also" onclick="addWordToList()">also</button>
+      </div>
+      <ul id="wordList">
+        <!-- populated by user -->
+      </ul>
     </div>
     <div class="subview">
       <div class="h3">
         Let’s see what you thought of and what was still missing
       </div>
-      <div class="h3">Reveal:</div>
-      <input style="width:10vw; height:10vw;" type="checkbox" onclick="revealWords(this)"/>
+      <button onclick="populateRevealWords()">Reveal</button>
+      <div>Correct:</div>
+      <ul id="revealWordsCorrect"></ul>
+      <div>You Missed:</div>
+      <ul id="revealWordsMissed"></ul>
+    </div>
+    <div class="subview">
+      <h2>Consistency Is Key</h2>
+      <p id="t0"></p>
+    </div>
+    <div class="subview">
+      <h2>How Long Did You Sleep?</h2>
+      <p id="t1"></p>
+    </div>
+    <div class="subview" id="t2">
+      <h2>Caffeine</h2>
+      <p>Caffeine helps your concentration and even increases your body's tolerance for pain. However it makes sleeping almost impossible. With a half-life-time of 3 to 5 hours caffeine stays in your body and keeps you from getting good sleep for far longer than you might expect. Avoid consuming caffeine after noon. 
+      </p>
+    </div>
+    <div class="subview">
+      <h2>Establish a bedtime routine</h2>
+      <p>
+        What you do in the hour before bed has an enormous impact on the quality of your sleep.<br>
+        <span id="t3">Watching TV and being on your computer or phone is not a good idea. They are extremely stimulating for the bed and by that prevent winding down. They also emit blue light which puts your brain in “awake-mode”. </span>
+        Quiet activities like reading or meditation are great for getting your mind ready for sleep.
+        <span id="t4"></span>
+        <br>Doing sports is a great way to exhaust yourself and clear your head before bed. However if done just before going to bed, the high body temperature will make falling asleep harder.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="view" id="tailorSleep">
+  <div class="subview-wrap">
+    <div class="subview">
+      <h2>
+        Sleep Health
+      </h2>
+
+      <p>
+        Learn about the manyfold benefits of good sleep and what you can do to improve your own sleep health
+      </p>
+
+      <p>
+        <h3>
+          Learning Outcomes:
+        </h3>
+        <ul>
+          <li>
+            Understanding the benefits of sleep for mental and physical health
+          </li>
+          <li>
+            Exploring the factors that influence sleep quality
+          </li>
+          <li>
+            Learning what you can do to improve your sleep health
+          </li>
+        </ul>
+      </p>
+
+      <p>
+        <h3>
+          Teaching Methods:
+        </h3>
+        <ul>
+          <li>
+            Brainstorming
+          </li>
+          <li>
+            Quiz
+          </li>
+          <li>
+            Text
+          </li>
+        </ul>
+      </p>
+    </div>
+    <div class="subview">
+      <p>Let’s start with a little quiz about your sleep habits. This way we can tailor this session to your needs.
+      </p>
+    </div>
+    <!-- populate from main.js -->
+    <div id="lastChild" class="subview">
+      <button onclick="recordTailorResponses();mnml.switchView('sleephealth')">Back To Topic</button>
     </div>
   </div>
 </div>

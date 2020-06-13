@@ -58,6 +58,7 @@ var init = function(){
 
   sleepCourse.loaded.then(()=>{
     sleepCourse.cloneElements(document.body);
+    populateTailorSleep();
   })
 
   function setupSleep(){
@@ -69,86 +70,7 @@ var init = function(){
         alreadySelected = true;
       }
     },false);
-
-    let wordCanvas = document.querySelector("#wordCanvas");
-    wordCanvas.width = window.innerWidth;
-    wordCanvas.height = window.innerHeight;
-    let wc = wordCanvas.getContext("2d");
-    wc.font = "20px Arial";
-    let anim = null;
-    let words = [];
-    let hasStarted = false;
-    mnml.addControl("wordControls",{
-      label:"word",
-      name:"words",
-      value:"sleep",
-      type:"text"
-    })
-    document.querySelector("#wordControls").addEventListener("mnmlChange",(e)=>{
-      let x = Math.random() * wordCanvas.width;
-      let y = Math.random() * wordCanvas.height;
-      x = wordCanvas.width/2;
-      y = wordCanvas.height/2;
-      h = Math.floor(Math.random() * 360);
-      let a = Math.random() * Math.PI * 2;
-      let inSet = sleepCourse.content["sleepWords"].includes(e.detail.value.toLowerCase());
-      words.push({
-        text:e.detail.value,
-        x:x,
-        y:y,
-        a:a,
-        h:h,
-        inSet:inSet
-      });
-
-      mnml.e.controls.wordControls.elements.words.value = "";
-      if(!hasStarted){
-        hasStarted = true;
-        renderWords();
-      }
-    },false);
-
-    function angleReflect(incidenceAngle, surfaceAngle){
-      var a = surfaceAngle * 2 - incidenceAngle;
-      return a >= Math.PI*2 ? a - Math.PI*2 : a < 0 ? a + Math.PI*2 : a;
-    }
-
-    function renderWords(){
-      wc.beginPath();
-      wc.clearRect(0,0,wordCanvas.width,wordCanvas.height);
-      let v = 1;
-      
-      words.forEach(w=>{
-        let d = wc.measureText(w.text);
-        let r = d.width/2;//width of word
-        let x = w.x + r;
-        let y = w.y - 5;
-        if(w.x < 0 || w.x > wordCanvas.width - r){
-          w.a = angleReflect(w.a,Math.PI/2);
-        }
-        if(w.y < 0 || w.y > wordCanvas.height - r){
-          w.a = angleReflect(w.a,0);
-        }
-        w.x += v * Math.cos(w.a);
-        w.y += v * Math.sin(w.a);
-        
-        wc.beginPath();
-        wc.arc(x,y,r,0,Math.PI*2);
-        wc.strokeStyle = `hsl(${w.h},50%,50%)`;
-        wc.stroke();
-        if(revWords && w.inSet){
-          wc.fillStyle = `hsl(${w.h},50%,50%)`;
-          wc.fill();
-          wc.fillStyle = "#fff"
-        } else {
-          wc.fillStyle = "#000"
-        }
-        
-        wc.fillText(w.text,w.x,w.y);
-      });
-      anim = requestAnimationFrame(renderWords);
-    }
-  }
+   }
 
   Promise.all([sleepCourse.loaded,pandemicsCourse.loaded]).then(()=>{
     mnml = new MNML();
@@ -160,10 +82,125 @@ var init = function(){
       }
     },false)
   })
-  
 }
 
-var revWords = false;
-function revealWords(c){
-  revWords = c.checked;
+function populateTailorSleep(){
+    let Qs = sleepCourse.content["tailor"];
+    let parentEl = document.querySelector("#tailorSleep > .subview-wrap");
+    let lastChild = document.querySelector("#tailorSleep #lastChild");
+    for(let i in Qs.questions){
+      subview = document.createElement("div"); subview.classList.add("subview"); subview.dataset.index = i;
+      qEl = document.createElement("div"); qEl.classList.add("question");
+      qEl.innerText = Qs.questions[i].Question;
+      let oEL = null;
+      if(Qs.questions[i].Type == "single"){
+        oEl = document.createElement("select"); oEl.classList.add("oel"); oEl.name = "tailor"+i;
+        for(let j of Qs.questions[i].Options){
+          let option = document.createElement("option");
+          option.innerText = j;
+          option.value = j;
+          oEl.appendChild(option);
+        }
+      } else {//multiple
+        oEl = document.createElement("div"); oEl.classList.add("oel");
+        for(let j of Qs.questions[i].Options){
+          let optionWrapper = document.createElement("div"); optionWrapper.classList.add("option-wrapper");
+          let option = document.createElement("input"); option.name="tailor"+i; option.type="checkbox";
+          option.value = j;
+          let optionLabel = document.createElement("label");
+          optionLabel.innerText = j;
+          optionWrapper.appendChild(option); optionWrapper.appendChild(optionLabel);
+          oEl.appendChild(optionWrapper);
+        }
+      }
+      subview.appendChild(qEl); subview.appendChild(oEl);
+      parentEl.insertBefore(subview,lastChild);
+    }
+}
+
+function recordTailorResponses(){
+  sleepCourse.responses = {};
+  let inputs = document.querySelectorAll("*[name^=tailor]");
+  for(var i=0; i<inputs.length; i++){
+    let name = inputs[i].name;
+    let type = inputs[i].type;
+    let value = inputs[i].value;
+    if(!(name in sleepCourse.responses)){
+      sleepCourse.responses[name] = []
+    }
+    if(type == "select-one" || inputs[i].checked){
+      sleepCourse.responses[name].push(value);
+    }
+  }
+  populateTailorContent();
+}
+
+wordList = [];
+function addWordToList(){
+  let value = document.querySelector("#sleepInfluenceText").value;
+  let item = document.createElement("li"); item.innerText = value;
+  let parent = document.querySelector("#wordList");
+  parent.appendChild(item);
+  wordList.push(value);
+  document.querySelector("#sleepInfluenceText").value = "";
+}
+
+function populateRevealWords(){
+  let compiledList = [];
+  let correct = document.querySelector("#revealWordsCorrect");
+  let missed = document.querySelector("#revealWordsMissed");
+  for(let arr of sleepCourse.content["sleepWords"]){
+    let thereBeWords = false;
+    for(let w of wordList){
+      if(arr.includes(w)){
+        thereBeWords = true;
+        compiledList.push([w,true]);
+        break;
+      }
+    }
+    if(!thereBeWords){
+      compiledList.push([arr[0],false]);
+    }
+  }
+  
+  // make the elements
+  correct.innerHTML = "";
+  missed.innerHTML = "";
+  for(let a of compiledList){
+    let li = document.createElement("li");
+    li.innerText = a[0];
+    if(a[1]){
+      correct.appendChild(li);
+    } else {
+      missed.appendChild(li);
+    }
+  }
+}
+
+function populateTailorContent(){
+  let content = sleepCourse.content["tailorContent"];
+  for(item of content){
+    let q = sleepCourse.responses["tailor"+item.qindex];
+    let included = q.includes(item.ans);
+    let element = document.getElementById(item.id);
+    if(!included && item.reverse == null){continue;}
+
+    if(item.type == "input"){
+      if(included){
+        element.innerText = item.text;
+      } else if(!included && item.reverse != null){
+        element.innerText = item.reverse;
+      }
+    } else if(item.type == "show"){
+      if(included){
+        element.style.display = "initial";
+      } else {
+        element.style.display = "none";
+      }
+    } else if(item.type == "hide"){
+      if(included){
+        element.style.display = "none";
+      }
+    }
+  }
 }

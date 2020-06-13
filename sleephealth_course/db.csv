@@ -1,0 +1,5 @@
+Question,Options,Type
+Do you usually go to bed and wake up at the same time?,"Yes,No",single
+How many hours do you usually sleep?,"Less than 5h, 5 - 7h, 7 - 9h, More than 9h",single
+Do you regularly consume coffee or other drinks containing caffeine?,"Yes,No",single
+Which of the following do you do less than one hour before going to bed?,"Watching something on TV or your computer, Reading, Doing sports, Showering, Eating, Practising meditation or mindfulness, Using your phone",multiple

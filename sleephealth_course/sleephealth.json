@@ -1,17 +1,145 @@
 {
-  "sleepWords":[
-    "red light",
-    "food",
-    "stress"
-  ],
-  "quiz1":{
-    "type":"quiz",
+  "sleepWords":[["duration", "length"], ["consistency", "regularity", "rhythm", "pattern"], ["caffeine", "coffee", "energy drinks"], ["sports", "working out"], ["outside temperature","temperature", "heat", "cold", "climate", "warmth"], ["light", "brightness", "blue diodes", "blue light"], ["media usage", "phone", "tv", "netflix"], ["age"], ["medication", "sleeping pills", "medicine", "drugs"], ["substances", "alcohol", "weed"], ["noise", "sound", "loudness"], ["body temperature"]],
+  "tailor":{
     "questions":[
       {
-        "Q":"Do you usually go to bed at the same time?",
-        "O":["yes","no"],
-        "A":""
+        "Question": "Do you usually go to bed and wake up at the same time?",
+        "Options": [
+          "Yes",
+          "No"
+        ],
+        "Type": "single"
+      },
+      {
+        "Question": "How many hours do you usually sleep?",
+        "Options": [
+          "Less than 5h",
+          "5 - 7h",
+          "7 - 9h",
+          "More than 9h"
+        ],
+        "Type": "single"
+      },
+      {
+        "Question": "Do you regularly consume coffee or other drinks containing caffeine?",
+        "Options": [
+          "Yes",
+          "No"
+        ],
+        "Type": "single"
+      },
+      {
+        "Question": "Which of the following do you do less than one hour before going to bed?",
+        "Options": [
+          "Watching something on TV or your computer",
+          "Reading",
+          "Doing sports",
+          "Showering",
+          "Eating",
+          "Practising meditation or mindfulness",
+          "Using your phone"
+        ],
+        "Type": "multiple"
       }
     ]
-  }
+  },
+
+  "tailorContent":[
+    {
+      "qindex": 0,
+      "ans": "No",
+      "text": "You should really consider adapting a regular sleeping schedule. Only this way can your body get use to a rhythm which means you will fall asleep and wake up more easily.",
+      "type": "input",
+      "id": "t0",
+      "reverse": null
+    },
+    {
+      "qindex": 0,
+      "ans": "Yes",
+      "text": "A routine helps your body get use to a rhythm which means you will fall asleep and wake up more easily. You\u2019re doing everything right!",
+      "type": "input",
+      "id": "t0",
+      "reverse": null
+    },
+    {
+      "qindex": 1,
+      "ans": "Less than 5h",
+      "text": "Sleeping less than 5 hours on a regular basis is detrimental. You should try to get around 8 hours of sleep a night. By the way: sleeping it off on the weekend does not work.",
+      "type": "input",
+      "id": "t1",
+      "reverse": null
+    },
+    {
+      "qindex": 1,
+      "ans": "5 - 7h",
+      "text": "Sleeping 5-7 hours is not enough. After only 10 days of 7 h your brain is as impaired as if you stayed up for 24 h straight. Aim for 8 hours to maintain full cognitive performance.",
+      "type": "input",
+      "id": "t1",
+      "reverse": null
+    },
+    {
+      "qindex": 1,
+      "ans": "7 - 9h",
+      "text": "7 to 9 hours is the optimal amount of sleep for an adult. This helps you be at peak mental and physical performance. Keep it up!",
+      "type": "input",
+      "id": "t1",
+      "reverse": null
+    },
+    {
+      "qindex": 1,
+      "ans": "More than 9h",
+      "text": "As important as sleep is; sleeping over 9 hours regularly is not good for you either. Oversleeping brings many of the same dangers as sleep deprivation with it. Sleeping 7 to 9 hours is optimal",
+      "type": "input",
+      "id": "t1",
+      "reverse": null
+    },
+    {
+      "qindex": 2,
+      "ans": "Yes",
+      "text": "Caffeine helps your concentration and even increases your body's tolerance for pain. However it makes sleeping almost impossible. With a half-life-time of 3 to 5 hours caffeine stays in your body and keeps you from getting good sleep for far longer than you might expect. Avoid consuming caffeine after noon.",
+      "type": "show",
+      "id": "t2",
+      "reverse": null
+    },
+    {
+      "qindex": 2,
+      "ans": "No",
+      "text": null,
+      "type": "hide",
+      "id": "t2",
+      "reverse": null
+    },
+    {
+      "qindex": 3,
+      "ans": "Watching something on TV or your computer",
+      "text": "Watching TV and being on your computer or phone is not a good idea. They are extremely stimulating for the bed and by that prevent winding down. They also emit blue light which puts your brain in \u201cawake-mode\u201d.",
+      "type": "show",
+      "id": "t3",
+      "reverse": null
+    },
+    {
+      "qindex": 3,
+      "ans": "Reading",
+      "text": "Keep these habits up!",
+      "type": "input",
+      "id": "t4",
+      "reverse": "Consider adding these into your evening"
+    },
+    {
+      "qindex": 3,
+      "ans": "Practising meditation or mindfulness",
+      "text": "Keep these habits up!",
+      "type": "input",
+      "id": "t4",
+      "reverse": "Consider adding these into your evening"
+    },
+    {
+      "qindex": 3,
+      "ans": "Using your phone",
+      "text": "Watching TV and being on your computer or phone is not a good idea. They are extremely stimulating for the bed and by that prevent winding down. They also emit blue light which puts your brain in \u201cawake-mode\u201d.",
+      "type": "show",
+      "id": "t3",
+      "reverse": null
+    }
+  ]
 }

@@ -88,7 +88,7 @@ class MNML {
     this.e.navToggle.addEventListener("click",this.toggleNav.bind(this),false);
 
     this.e.nav.addEventListener("click",(e)=>{
-      if(e.target.parentNode == e.currentTarget){
+      if(e.target.parentNode == e.currentTarget && e.target.dataset.view){
         this.switchView(e.target.dataset.view);
       }
     },false);

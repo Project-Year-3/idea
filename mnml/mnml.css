@@ -104,13 +104,9 @@ body {
   grid-gap:2vh;
 }
 
-#mnml > nav > span {
-  display: grid;
-  place-items: center;
-  height:5vh;
-  padding:2vh 0 2vh 0;
-  background: rgba(83, 83, 83, 0.247);
-  width:max(33vw,150px);
+#mnml > nav > * {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 #mnml>nav.open {
@@ -184,6 +180,11 @@ body {
   place-items: space-around;
   place-content: space-around;
 }
+
+button {
+  cursor: pointer;
+}
+
 
 @media (min-width: 600px){
   :root {

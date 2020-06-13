@@ -35,7 +35,7 @@
         <link rel="stylesheet" type="text/css" href="mnml/mnml.css">
         <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
         <link rel="stylesheet" type="text/css" href="css/main.css">
-        <title>Hello World</title>
+        <title>IDEA</title>
     </head>
     <body>
         <div id="mnml">
@@ -44,16 +44,20 @@
             </header>
             <nav>
                 <div data-view="pandemics">Pandemics</div>
-                <div data-view="sleephealth">Sleep-Health</div>
+                <div data-view="tailorSleep">Sleep-Health</div>
+                <!-- <div data-view="tailorSleep">Tailor</div> -->
+                <a target="_blank">WhitePaper</a>
             </nav>
             <main>
                 <div class="current view" id="v0">
                     <div class="subview-wrap">
                         <div class="subview">
                             <img src='img/logo.svg' id="logo">
-                            <h2>I want to learn about</h2>
-                            <button onclick="mnml.switchView('pandemics')">Pandemics</button>
-                            <button onclick="mnml.switchView('sleephealth')">Sleep-Health</button>
+                            <div>
+                                <h2>I want to learn about</h2>
+                                <button onclick="mnml.switchView('pandemics')">Pandemics</button>
+                                <button onclick="mnml.switchView('tailorSleep')">Sleep-Health</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,6 +70,7 @@
                 <div class="view" id="pandemics2"></div>
 
                 <div class="view" id="sleephealth"></div>
+                <div class="view" id="tailorSleep"></div>
             </main>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
