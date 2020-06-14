@@ -64,6 +64,12 @@ var init = function(){
   function setupSleep(){
     var quiz = document.querySelector("#sleepQuiz");
     var alreadySelected = false;
+    quiz.addEventListener("touchend",(e)=>{
+      if(e.target != e.currentTarget.children && !alreadySelected){
+        e.target.classList.add("selected");
+        alreadySelected = true;
+      }
+    },false);
     quiz.addEventListener("click",(e)=>{
       if(e.target != e.currentTarget.children && !alreadySelected){
         e.target.classList.add("selected");
@@ -72,10 +78,18 @@ var init = function(){
     },false);
    }
 
+   alreadySelected = false;
+   selectME = function(target){
+     if(!alreadySelected){
+       alreadySelected = true;
+       target.classList.add("selected");
+     }
+   }
+
   Promise.all([sleepCourse.loaded,pandemicsCourse.loaded]).then(()=>{
     mnml = new MNML();
     setupPandemics();
-    setupSleep();
+    //setupSleep();
     mnml.e.mnml.addEventListener("viewChange",e=>{
       if(e.detail == "pandemics2"){
         pModel.chart.render();
@@ -137,7 +151,7 @@ function recordTailorResponses(){
 
 wordList = [];
 function addWordToList(){
-  let value = document.querySelector("#sleepInfluenceText").value;
+  let value = document.querySelector("#sleepInfluenceText").value.toLowerCase();
   let item = document.createElement("li"); item.innerText = value;
   let parent = document.querySelector("#wordList");
   parent.appendChild(item);

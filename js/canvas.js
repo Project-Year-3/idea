@@ -1,13 +1,14 @@
 // configures all the canvases
 
 class Canvas {
-  config = {
-    fill:"white",
-    stroke:"white"
-  }
+  
 
   constructor(id,chartData={}, updater=null){
     var self = this;
+    this.config = {
+      fill:"white",
+      stroke:"white"
+    }
     if(updater != null){//custom animation, not a chart
       this.updater = updater;
       this.element = document.createElement("canvas");

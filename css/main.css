@@ -78,11 +78,11 @@ input[type="radio"]::after{
     display: grid;
     place-content: center;
 }
-.options > div.correct.selected {
+.options > button.correct.selected {
     background: green;
 }
 
-.options > div.selected {
+.options > button.selected {
     background: red;
 }
 

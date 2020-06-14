@@ -41,10 +41,10 @@
       </p>
       <img src="img/sfig4.jpeg" alt="test" />
       <div id="sleepQuiz" class="options">
-        <div class="correct">Pulling an allnighter</div>
-        <div>Taking a midday nap</div>
-        <div>Waking up in the middle of the night</div>
-        <div>Working night shift</div>
+        <button class="correct" onclick="selectME(this)">Pulling an allnighter</button>
+        <button onclick="selectME(this)">Taking a midday nap</button>
+        <button onclick="selectME(this)">Waking up in the middle of the night</button>
+        <button onclick="selectME(this)">Working night shift</button>
       </div>
     </div>
     <div class="subview">
@@ -90,7 +90,7 @@
       </p>
       <!-- <div class="controls" id="wordControls"></div> -->
       <div id="sleepInfluenceWrap">
-        <input id="sleepInfluenceText" placeholder="caffeine"/>
+        <input id="sleepInfluenceText" placeholder="what influences your sleep?"/>
         <button style="grid-area:also" onclick="addWordToList()">also</button>
       </div>
       <ul id="wordList">
@@ -124,7 +124,7 @@
       <h2>Establish a bedtime routine</h2>
       <p>
         What you do in the hour before bed has an enormous impact on the quality of your sleep.<br>
-        <span id="t3">Watching TV and being on your computer or phone is not a good idea. They are extremely stimulating for the bed and by that prevent winding down. They also emit blue light which puts your brain in “awake-mode”. </span>
+        <span id="t3">Watching TV and being on your computer or phone is not a good idea. They are extremely stimulating for the brain and by that prevent winding down. They also emit blue light which puts your brain in “awake-mode”. </span>
         Quiet activities like reading or meditation are great for getting your mind ready for sleep.
         <span id="t4"></span>
         <br>Doing sports is a great way to exhaust yourself and clear your head before bed. However if done just before going to bed, the high body temperature will make falling asleep harder.
