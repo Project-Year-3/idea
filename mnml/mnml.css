@@ -129,7 +129,7 @@ body {
 }
 
 #mnml .subview-wrap {
-  overflow-x: scroll;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   display: grid;
   grid-auto-flow: column;

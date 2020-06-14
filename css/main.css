@@ -1,9 +1,28 @@
+@font-face {
+    font-family: "OpenSans";
+    src: url("Open_Sans/OpenSans-regular.ttf");
+}
+@font-face {
+    font-family: "Playfair";
+    src: url("Playfair_Display/static/PlayfairDisplay-Regular.ttf");
+}
+@font-face {
+    font-family: "SansForgetica";
+    src: url("Sans Forgetica/SansForgetica-Regular.otf");
+}
+
 :root {
     font-size: 16px;
     --col:hsl(213, 50%, 50%);
     --col1:hsl(213, 20%, 50%);
     --col3:hsl(213, 62%, 62%);
     --col4:hsl(213, 50%, 45%);
+    --bodyFont:"OpenSans";
+    --titleFont:"Playfair";
+    font-family: var(--bodyFont), sans-serif;
+}
+h1, h2, h3 {
+    font-family: var(--titleFont), serif;
 }
 
 input[type="number"] {
@@ -138,4 +157,13 @@ input[type="radio"]::after{
 
 .subview input[type=text]{
     font-size: 3vh;
+}
+
+.option-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 2vh 2vw;
+    place-content: start;
+    place-items: baseline;
+    padding: 1vh 1vw;
 }

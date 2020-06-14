@@ -218,3 +218,14 @@ function populateTailorContent(){
     }
   }
 }
+
+function setSetting(el){
+  let setting = el.dataset.var;
+  if(setting == "sansForget"){
+    if(el.checked){
+      document.documentElement.style.setProperty("--bodyFont","SansForgetica");
+    } else {
+      document.documentElement.style.setProperty("--bodyFont","OpenSans");
+    }
+  }
+}

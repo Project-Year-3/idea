@@ -46,8 +46,8 @@
             <nav>
                 <div data-view="pandemics">Pandemics</div>
                 <div data-view="tailorSleep">Sleep-Health</div>
-                <!-- <div data-view="tailorSleep">Tailor</div> -->
                 <a target="_blank">WhitePaper</a>
+                <div data-view="settings">Settings</div>
             </nav>
             <main>
                 <div class="current view" id="v0">
@@ -72,6 +72,12 @@
 
                 <div class="view" id="sleephealth"></div>
                 <div class="view" id="tailorSleep"></div>
+
+                <div class="view" id="settings">
+                    <div class="option-wrapper">
+                        <input type="checkbox" value="sansForget" data-var="sansForget" onchange="setSetting(this)"/><label>Use <span style="font-family: SansForgetica;">Sans Forgetica</span>, a font designed to help you learn</label>
+                    </div>
+                </div>
             </main>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
