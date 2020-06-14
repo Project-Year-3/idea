@@ -94,6 +94,9 @@ var init = function(){
      if(!alreadySelected){
        alreadySelected = true;
        target.classList.add("selected");
+       setTimeout(()=>{
+         target.parentElement.querySelector(".correct").classList.add("selected");
+       },500)
      }
    }
 

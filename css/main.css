@@ -88,7 +88,7 @@ input[type="radio"]::after{
 
 #mnml .subview-wrap > .subview {
     place-items: start;
-    place-content: start;
+    place-content: center;
     width: calc(var(--width) * 0.98)
 }
 
