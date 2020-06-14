@@ -11,9 +11,8 @@ pModel.config = {
   population_size: 1000,
   initial_infections: 2,
   infection_constant: 0.8,
-  recovery_constant: 0.05,
-  lethality:0.1,
-  closing_time: 14
+  recovery_constant: 0.4,
+  lethality:0.1
 }
 
 pModel.current = {

@@ -15,6 +15,24 @@ var init = function(){
 
   function setupPandemics(){
     mnml.addControl("pandemicSim",{
+      label:"Population",
+      name:"population_size",
+      type:"range",
+      value:1000,
+      min:50,
+      max:10000,
+      step:10
+    })
+    mnml.addControl("pandemicSim",{
+      label:"Initially Infected",
+      name:"initial_infections",
+      type:"range",
+      value:2,
+      min:1,
+      max:1000,
+      step:1
+    })
+    mnml.addControl("pandemicSim",{
       label:"Infection Constant",
       name:"infection_constant",
       type:"range",
@@ -27,24 +45,17 @@ var init = function(){
       label:"Probability of Recovery",
       name:"recovery_constant",
       type:"range",
-      value:0.9,
+      value:0.4,
       min:0,
       max:1,
       step:0.1
     })
-    mnml.addControl("pandemicSim",{
-      label:"Closing Time",
-      name:"closing_time",
-      type:"range",
-      value:14,
-      min:5,
-      max:250,
-      step:1
-    });
 
     document.querySelector("#pandemicSim").addEventListener("mnmlChange",(e)=>{
-      console.log(e.detail)
       pModel.config[e.detail.name] = Number(e.detail.value);
+      if(e.detail.name = "population_size"){
+        mnml.e.controls.pandemicSim.elements.initial_infections.max = mnml.e.controls.pandemicSim.values.population_size;
+      }
     },false);
 
     pModel.initialise();

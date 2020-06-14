@@ -20,9 +20,35 @@
     --bodyFont:"OpenSans";
     --titleFont:"Playfair";
     font-family: var(--bodyFont), sans-serif;
+    color:black;
+    background: white;
+    /* transition: 1s color, 1s background; */
+}
+
+:root * {
+    color:inherit;
+    transition: initial;
+}
+
+:root.dark {
+    color:white;
+    background: hsl(0, 0%, 2%);
+    --col:hsl(0, 50%, 50%);
+    --col1:hsl(0, 20%, 50%);
+    --col3:hsl(0, 62%, 62%);
+    --col4:hsl(0, 50%, 45%);
+}
+
+:root.dark select>option {
+    background: black;
 }
 h1, h2, h3 {
     font-family: var(--titleFont), serif;
+}
+
+button, input {
+    font-family: inherit;
+    color:inherit;
 }
 
 input[type="number"] {

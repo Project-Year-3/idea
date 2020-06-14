@@ -24,7 +24,6 @@
 
 body {
   margin:0;
-  background: rgb(0, 0, 0);
 }
 
 #mnml {
@@ -78,7 +77,6 @@ body {
 
 #mnml>main{
   grid-area:main;
-  background:#fff;
   display: grid;
   width:var(--width);
   height:var(--height);
