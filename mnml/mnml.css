@@ -42,12 +42,12 @@ body {
 #mnml>header{
   grid-area:header;
   color:white;
-  background: var(--col);
+  background: linear-gradient(0deg,var(--col),var(--col4));
   height:7vh;
   font-size: 6vh;
   display: grid;
   place-content: space-around;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.726);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.726);
   z-index: 9001;
   grid-auto-flow: column;
   grid-template-areas: "navToggle .";
@@ -68,7 +68,7 @@ body {
   background-repeat: no-repeat;
   background-size: 4vh;
   transition: all 0.2s;
-  box-shadow: inset 0 0px 2px rgba(0, 0, 0, 0.527);
+  box-shadow: inset 0 0px 2px black;
 }
 
 #mnml>header>#navToggle.open {
@@ -86,7 +86,7 @@ body {
 }
 
 #mnml>nav{
-  background:var(--col4);
+  background:linear-gradient(180deg,var(--col),var(--col4));
   display: grid;
   z-index: 9000;
   position: fixed;
@@ -94,7 +94,7 @@ body {
   height:93vh;
   top:7vh;
   left:0;
-  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.726);
+  box-shadow: 1px 0 2px black;
   transform:translateX(calc(-1 * max(50vw,200px)));
   transition: transform 0.2s;
   grid-area: nav;
