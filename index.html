@@ -73,9 +73,12 @@
                 <div class="view" id="sleephealth"></div>
                 <div class="view" id="tailorSleep"></div>
 
-                <div class="view" id="settings">
+                <div class="view" id="settings" style="place-items: start;">
                     <div class="option-wrapper">
-                        <input type="checkbox" value="sansForget" data-var="sansForget" onchange="setSetting(this)"/><label>Use <span style="font-family: SansForgetica;">Sans Forgetica</span>, a font designed to help you learn</label>
+                        <input id="sansForget" type="checkbox" value="sansForget" data-var="sansForget" onchange="setSetting(this)"/><label>Use <span style="font-family: SansForgetica;">Sans Forgetica</span>, a font designed to help you learn</label>
+                    </div>
+                    <div class="option-wrapper">
+                        <input id="dark" type="checkbox" value="dark" data-var="dark" onchange="setSetting(this)"/><label>dark mode</label>
                     </div>
                 </div>
             </main>

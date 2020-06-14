@@ -109,6 +109,12 @@ var init = function(){
         pModel.chart.render();
       }
     },false)
+  });
+
+  document.querySelector("#sansForget").checked = localStorage.forgetica == "true";
+  document.querySelector("#dark").checked = localStorage.dark == "true";
+  ["#sansForget","#dark"].forEach(i=>{
+    setSetting(document.querySelector(i));
   })
 }
 
@@ -117,7 +123,7 @@ function populateTailorSleep(){
     let parentEl = document.querySelector("#tailorSleep > .subview-wrap");
     let lastChild = document.querySelector("#tailorSleep #lastChild");
     for(let i in Qs.questions){
-      subview = document.createElement("div"); subview.classList.add("subview"); subview.dataset.index = i;
+      subview = document.createElement("div"); subview.classList.add("subview","center"); subview.dataset.index = i;
       qEl = document.createElement("div"); qEl.classList.add("question");
       qEl.innerText = Qs.questions[i].Question;
       let oEL = null;
@@ -238,8 +244,18 @@ function setSetting(el){
   if(setting == "sansForget"){
     if(el.checked){
       document.documentElement.style.setProperty("--bodyFont","SansForgetica");
+      localStorage.forgetica = "true";
     } else {
       document.documentElement.style.setProperty("--bodyFont","OpenSans");
+      localStorage.forgetica = "false";
+    }
+  } else if(setting == "dark"){
+    if(el.checked){
+      document.documentElement.classList.add("dark");
+      localStorage.dark = "true";
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.dark = "false";
     }
   }
 }
