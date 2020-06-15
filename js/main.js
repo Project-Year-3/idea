@@ -271,12 +271,18 @@ function trololol(){
   if(tapz == 5){
     window.addEventListener("deviceorientation",hueChange,false);
   } else if(tapz == 7){
+    alert("quit tapping me!");
+  } else if(tapz == 9){
+    alert("Okay you know what?");
+  } else if(tapz == 10){
+    alert("YOU KNOW WHAT?!");
+  } else if (tapz == 11){
     window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ","_blank");
   }
 }
 
 function hueChange(e){
-  let a = e.alpha/30;
+  let a = e.beta/30;
   if(Math.abs(a) > 1){
     a = Math.sign(a);
   }
