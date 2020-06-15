@@ -270,6 +270,8 @@ function trololol(){
   tapz += 1;
   if(tapz == 5){
     window.addEventListener("deviceorientation",hueChange,false);
+  } else if(tapz == 7){
+    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ","_blank");
   }
 }
 
@@ -278,5 +280,5 @@ function hueChange(e){
   if(Math.abs(a) > 1){
     a = Math.sign(a);
   }
-  document.body.style.filter = `hue-rotate(${Math.floor(a*360)}deg)`;
+  document.body.style.filter = `hue-rotate(${Math.floor(Math.abs(a)*360)}deg)`;
 }
