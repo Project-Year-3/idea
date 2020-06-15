@@ -22,6 +22,7 @@
     font-family: var(--bodyFont), sans-serif;
     color:black;
     background: white;
+    line-height: 1.3;
     /* transition: 1s color, 1s background; */
 }
 
@@ -49,6 +50,11 @@ h1, h2, h3 {
 button, input, select {
     font-family: inherit;
     color:inherit;
+}
+
+#mnml #icon {
+    height:6vh;
+    width:auto;
 }
 
 input[type="number"] {
@@ -84,6 +90,12 @@ input[type="radio"]::after{
 .canvas-wrapper > canvas {
     width:min(var(--width),var(--height));
     height:min(var(--width),var(--height));
+}
+
+#mnml > header {
+    align-content: center;
+    justify-content: start;
+    grid-template-columns: 0.15fr 0.7fr 0.15fr;
 }
 
 #mnml .subview-wrap > .subview {

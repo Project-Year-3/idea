@@ -259,3 +259,24 @@ function setSetting(el){
     }
   }
 }
+
+tapz = 0;
+function trololol(){
+  if(mnml.e.currentView.id != "v0"){
+    mnml.switchView("v0");
+    tapz = 0;
+    return;
+  }
+  tapz += 1;
+  if(tapz == 5){
+    window.addEventListener("deviceorientation",hueChange,false);
+  }
+}
+
+function hueChange(e){
+  let a = e.alpha/30;
+  if(Math.abs(a) > 1){
+    a = Math.sign(a);
+  }
+  document.body.style.filter = `hue-rotate(${Math.floor(a*360)}deg)`;
+}
